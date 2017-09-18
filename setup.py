@@ -94,8 +94,8 @@ define_macros = [('HAS_POLL', None), ('HAS_FCNTL', None),
 libraries = []
 
 if sys.platform == 'win32':
-    define_macros.extend([('WIN32', None)])
-    libraries.extend(['ws2_32', 'Winmm'])
+    define_macros.extend([('MS_WIN64', None)])
+    libraries.extend(['Winmm', 'enet64', 'ws2_32'])
 
 if sys.platform != 'darwin':
     define_macros.extend([('HAS_GETHOSTBYNAME_R', None),
@@ -108,7 +108,8 @@ ext_modules = [
         sources=source_files,
         include_dirs=["enet/include/"],
         define_macros=define_macros,
-        libraries=libraries)
+        libraries=libraries,
+        library_dirs=["enet/"])
 ]
 
 setup(
