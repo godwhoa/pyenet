@@ -2,5 +2,3 @@ include LICENSE ChangeLog README.md
 include enet.pyx
 
 include *.py
-
-recursive-exclude enet *
